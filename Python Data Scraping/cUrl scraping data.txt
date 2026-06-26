@@ -1,0 +1,14 @@
+curl 'https://gql.tokopedia.com/graphql/ReviewList' \
+  -H 'sec-ch-ua-platform: "Windows"' \
+  -H 'x-version: a4c6963' \
+  -H 'Referer: https://www.tokopedia.com/' \
+  -H 'sec-ch-ua: "Chromium";v="142", "Brave";v="142", "Not_A Brand";v="99"' \
+  -H 'x-price-center: true' \
+  -H 'sec-ch-ua-mobile: ?0' \
+  -H 'bd-device-id: 7576651848371783185' \
+  -H 'x-source: tokopedia-lite' \
+  -H 'User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36' \
+  -H 'accept: /' \
+  -H 'content-type: application/json' \
+  -H 'x-tkpd-lite-service: zeus' \
+  --data-raw $'[{"operationName":"ReviewList","variables":{"shopID":"3591739","page":1,"limit":10,"sortBy":"create_time desc","filterBy":""},"query":"query ReviewList($shopID: String\u0021, $limit: Int\u0021, $page: Int\u0021, $filterBy: String, $sortBy: String) {\\n  productrevGetShopReviewReadingList(shopID: $shopID, limit: $limit, page: $page, filterBy: $filterBy, sortBy: $sortBy) {\\n    list {\\n      id: reviewID\\n      product {\\n        productID\\n        productName\\n        productImageURL\\n        productPageURL\\n        productStatus\\n        isDeletedProduct\\n        productVariant {\\n          variantID\\n          variantName\\n          __typename\\n        }\\n        __typename\\n      }\\n      rating\\n      reviewTime\\n      reviewText\\n      reviewerID\\n      reviewerName\\n      avatar\\n      replyText\\n      replyTime\\n      attachments {\\n        attachmentID\\n        thumbnailURL\\n        fullsizeURL\\n        __typename\\n      }\\n      videoAttachments {\\n        attachmentID\\n        videoUrl\\n        __typename\\n      }\\n      state {\\n        isReportable\\n        isAnonymous\\n        __typename\\n      }\\n      likeDislike {\\n        totalLike\\n        likeStatus\\n        __typename\\n      }\\n      badRatingReasonFmt\\n      __typename\\n    }\\n    hasNext\\n    shopName\\n    totalReviews\\n    __typename\\n  }\\n}\\n"}]'

@@ -1,0 +1,92 @@
+support,itemsets
+0.023519870235198703,frozenset({'Aerocool Lux Rgb 650M Modular Psu 80 Bronze 650W'})
+0.016220600162206,frozenset({'Corsair Rm750 750 Watt 80 Plus Gold Fully Modular Psu Cp 9020195 Eu'})
+0.010543390105433901,frozenset({'Cpu Pc Core I5 Ddr 8 Gb Hdd 500 Gb Pc Rakitan For Office'})
+0.032441200324412,frozenset({'Cpu Pc Rakitan Core I5 For Office Bonus Usb Wifi Wireles'})
+0.0113544201135442,frozenset({'Extra Packing Plastik Buble Warp'})
+0.0170316301703163,frozenset({'Fan Casing Pc Cooler Fx 120 3 Dynamic Color 120Mm'})
+0.012976480129764802,frozenset({'Harddisk Caddy 9 5Mm Ssd Sata For Laptop Notebook 9 5 Mm Hdd Caddy'})
+0.038118410381184104,frozenset({'Hardisk Pc 500Gb Hdd Hdd Internal Komputer 500 Gb Sata 3 5'})
+0.015409570154095702,frozenset({'Hynix Ram Pc Ddr4 8Gb Pc4 2666 21300 Longdimm'})
+0.015409570154095702,frozenset({'Komputer Mini Pc Kit Intel Nuc Nuc5I3Ryh I3 Ram 4Gb Ssd 120Gb'})
+0.050283860502838604,frozenset({'Memory Ram Pc Hynix 16N11 8 8Gb 1X8 Ddr3 Pc3 12800 1600Mhz'})
+0.0170316301703163,frozenset({'Monitor Led Spc Sm 19Hd 19 Inch Vga Hdmi Garansi Resmi'})
+0.013787510137875101,frozenset({'Monitor Samsung 27 Inch C27R500 Fhd Led Curved C27R500Fhe'})
+0.014598540145985401,frozenset({'Packing Kayu Standard'})
+0.012976480129764802,frozenset({'Pc Gaming Fullset Amd Ryzen 5 5600G Ssd 128Gb Lengkap Led 24 Inc'})
+0.010543390105433901,frozenset({'Pc Rakitan Gaming I3 10105F Gtx 1050Ti 4Gb Cocok Editing Render'})
+0.0364963503649635,frozenset({'Pc Rakitan Gaming I5 3470 Gtx 1050Ti 4Gb Cocok Editing Render'})
+0.0113544201135442,frozenset({'Ssd 128Gb Midasforce Sata Iii Super Lightning'})
+0.012976480129764802,frozenset({'Ssd 256 Gb High Speed Vurrion Resmi Garansi Resmi'})
+0.010543390105433901,frozenset({'Team T Force Vulcan Z Ssd 1Tb 2 5 Sata Iii 6Gb S'})
+0.11435523114355231,frozenset({'Vga Gaming Vurrion Gtx 750 Ti 4Gb Ddr5 128Bit Gaming Vga Ori'})
+0.016220600162206,frozenset({'Vurrion Blaze Radeon Rx580 8Gb Rx 580 8G Rx 580 8Gb Amd Radeon'})
+0.023519870235198703,frozenset({'Aerocool Lux Rgb 650M Modular Psu 80 Bronze 650W'})
+0.016220600162206,frozenset({'Corsair Rm750 750 Watt 80 Plus Gold Fully Modular Psu Cp 9020195 Eu'})
+0.010543390105433901,frozenset({'Cpu Pc Core I5 Ddr 8 Gb Hdd 500 Gb Pc Rakitan For Office'})
+0.032441200324412,frozenset({'Cpu Pc Rakitan Core I5 For Office Bonus Usb Wifi Wireles'})
+0.0113544201135442,frozenset({'Extra Packing Plastik Buble Warp'})
+0.0170316301703163,frozenset({'Fan Casing Pc Cooler Fx 120 3 Dynamic Color 120Mm'})
+0.012976480129764802,frozenset({'Harddisk Caddy 9 5Mm Ssd Sata For Laptop Notebook 9 5 Mm Hdd Caddy'})
+0.038118410381184104,frozenset({'Hardisk Pc 500Gb Hdd Hdd Internal Komputer 500 Gb Sata 3 5'})
+0.015409570154095702,frozenset({'Hynix Ram Pc Ddr4 8Gb Pc4 2666 21300 Longdimm'})
+0.015409570154095702,frozenset({'Komputer Mini Pc Kit Intel Nuc Nuc5I3Ryh I3 Ram 4Gb Ssd 120Gb'})
+0.050283860502838604,frozenset({'Memory Ram Pc Hynix 16N11 8 8Gb 1X8 Ddr3 Pc3 12800 1600Mhz'})
+0.0170316301703163,frozenset({'Monitor Led Spc Sm 19Hd 19 Inch Vga Hdmi Garansi Resmi'})
+0.013787510137875101,frozenset({'Monitor Samsung 27 Inch C27R500 Fhd Led Curved C27R500Fhe'})
+0.014598540145985401,frozenset({'Packing Kayu Standard'})
+0.012976480129764802,frozenset({'Pc Gaming Fullset Amd Ryzen 5 5600G Ssd 128Gb Lengkap Led 24 Inc'})
+0.010543390105433901,frozenset({'Pc Rakitan Gaming I3 10105F Gtx 1050Ti 4Gb Cocok Editing Render'})
+0.0364963503649635,frozenset({'Pc Rakitan Gaming I5 3470 Gtx 1050Ti 4Gb Cocok Editing Render'})
+0.0113544201135442,frozenset({'Ssd 128Gb Midasforce Sata Iii Super Lightning'})
+0.012976480129764802,frozenset({'Ssd 256 Gb High Speed Vurrion Resmi Garansi Resmi'})
+0.010543390105433901,frozenset({'Team T Force Vulcan Z Ssd 1Tb 2 5 Sata Iii 6Gb S'})
+0.11435523114355231,frozenset({'Vga Gaming Vurrion Gtx 750 Ti 4Gb Ddr5 128Bit Gaming Vga Ori'})
+0.016220600162206,frozenset({'Vurrion Blaze Radeon Rx580 8Gb Rx 580 8G Rx 580 8Gb Amd Radeon'})
+0.024761904761904763,"('Team T Force Vulcan Z Ssd 1Tb 2 5 Sata Iii 6Gb S',)"
+0.024761904761904763,"('Cpu Pc Core I5 Ddr 8 Gb Hdd 500 Gb Pc Rakitan For Office',)"
+0.02666666666666667,"('Ssd 128Gb Midasforce Sata Iii Super Lightning',)"
+0.02666666666666667,"('Pc Rakitan Gaming I3 10105F Gtx 1050Ti 4Gb Cocok Editing Render',)"
+0.02666666666666667,"('Extra Packing Plastik Buble Warp',)"
+0.009523809523809525,"('Extra Packing Plastik Buble Warp', 'Packing Kayu Standard')"
+0.030476190476190476,"('Pc Gaming Fullset Amd Ryzen 5 5600G Ssd 128Gb Lengkap Led 24 Inc',)"
+0.03238095238095238,"('Monitor Samsung 27 Inch C27R500 Fhd Led Curved C27R500Fhe',)"
+0.03428571428571429,"('Ssd 256 Gb High Speed Vurrion Resmi Garansi Resmi',)"
+0.03428571428571429,"('Harddisk Caddy 9 5Mm Ssd Sata For Laptop Notebook 9 5 Mm Hdd Caddy',)"
+0.03619047619047619,"('Komputer Mini Pc Kit Intel Nuc Nuc5I3Ryh I3 Ram 4Gb Ssd 120Gb',)"
+0.009523809523809525,"('Komputer Mini Pc Kit Intel Nuc Nuc5I3Ryh I3 Ram 4Gb Ssd 120Gb', 'Vga Gaming Vurrion Gtx 750 Ti 4Gb Ddr5 128Bit Gaming Vga Ori')"
+0.03619047619047619,"('Hynix Ram Pc Ddr4 8Gb Pc4 2666 21300 Longdimm',)"
+0.0380952380952381,"('Packing Kayu Standard',)"
+0.015238095238095238,"('Packing Kayu Standard', 'Vga Gaming Vurrion Gtx 750 Ti 4Gb Ddr5 128Bit Gaming Vga Ori')"
+0.0380952380952381,"('Vurrion Blaze Radeon Rx580 8Gb Rx 580 8G Rx 580 8Gb Amd Radeon',)"
+0.0380952380952381,"('Corsair Rm750 750 Watt 80 Plus Gold Fully Modular Psu Cp 9020195 Eu',)"
+0.011428571428571429,"('Corsair Rm750 750 Watt 80 Plus Gold Fully Modular Psu Cp 9020195 Eu', 'Vga Gaming Vurrion Gtx 750 Ti 4Gb Ddr5 128Bit Gaming Vga Ori')"
+0.04,"('Monitor Led Spc Sm 19Hd 19 Inch Vga Hdmi Garansi Resmi',)"
+0.04,"('Fan Casing Pc Cooler Fx 120 3 Dynamic Color 120Mm',)"
+0.009523809523809525,"('Aerocool Lux Rgb 650M Modular Psu 80 Bronze 650W', 'Vga Gaming Vurrion Gtx 750 Ti 4Gb Ddr5 128Bit Gaming Vga Ori')"
+0.013333333333333334,"('Aerocool Lux Rgb 650M Modular Psu 80 Bronze 650W', 'Hardisk Pc 500Gb Hdd Hdd Internal Komputer 500 Gb Sata 3 5', 'Vga Gaming Vurrion Gtx 750 Ti 4Gb Ddr5 128Bit Gaming Vga Ori')"
+0.013333333333333334,"('Aerocool Lux Rgb 650M Modular Psu 80 Bronze 650W', 'Hardisk Pc 500Gb Hdd Hdd Internal Komputer 500 Gb Sata 3 5')"
+0.009523809523809525,"('Memory Ram Pc Hynix 16N11 8 8Gb 1X8 Ddr3 Pc3 12800 1600Mhz', 'Pc Rakitan Gaming I5 3470 Gtx 1050Ti 4Gb Cocok Editing Render')"
+0.015238095238095238,"('Hardisk Pc 500Gb Hdd Hdd Internal Komputer 500 Gb Sata 3 5', 'Memory Ram Pc Hynix 16N11 8 8Gb 1X8 Ddr3 Pc3 12800 1600Mhz', 'Pc Rakitan Gaming I5 3470 Gtx 1050Ti 4Gb Cocok Editing Render')"
+0.022857142857142857,"('Memory Ram Pc Hynix 16N11 8 8Gb 1X8 Ddr3 Pc3 12800 1600Mhz', 'Pc Rakitan Gaming I5 3470 Gtx 1050Ti 4Gb Cocok Editing Render', 'Vga Gaming Vurrion Gtx 750 Ti 4Gb Ddr5 128Bit Gaming Vga Ori')"
+0.015238095238095238,"('Hardisk Pc 500Gb Hdd Hdd Internal Komputer 500 Gb Sata 3 5', 'Memory Ram Pc Hynix 16N11 8 8Gb 1X8 Ddr3 Pc3 12800 1600Mhz', 'Pc Rakitan Gaming I5 3470 Gtx 1050Ti 4Gb Cocok Editing Render', 'Vga Gaming Vurrion Gtx 750 Ti 4Gb Ddr5 128Bit Gaming Vga Ori')"
+0.011428571428571429,"('Hardisk Pc 500Gb Hdd Hdd Internal Komputer 500 Gb Sata 3 5', 'Pc Rakitan Gaming I5 3470 Gtx 1050Ti 4Gb Cocok Editing Render')"
+0.024761904761904763,"('Hardisk Pc 500Gb Hdd Hdd Internal Komputer 500 Gb Sata 3 5', 'Pc Rakitan Gaming I5 3470 Gtx 1050Ti 4Gb Cocok Editing Render', 'Vga Gaming Vurrion Gtx 750 Ti 4Gb Ddr5 128Bit Gaming Vga Ori')"
+0.017142857142857144,"('Pc Rakitan Gaming I5 3470 Gtx 1050Ti 4Gb Cocok Editing Render', 'Vga Gaming Vurrion Gtx 750 Ti 4Gb Ddr5 128Bit Gaming Vga Ori')"
+0.011428571428571429,"('Pc Rakitan Gaming I5 3470 Gtx 1050Ti 4Gb Cocok Editing Render', 'Vga Gaming Vurrion Gtx 750 Ti 4Gb Ddr5 128Bit Gaming Vga Ori', 'Vga Gaming Vurrion Gtx 750 Ti 4Gb Ddr5 128Bit Gaming Vga Ori')"
+0.01904761904761905,"('Cpu Pc Rakitan Core I5 For Office Bonus Usb Wifi Wireles', 'Cpu Pc Rakitan Core I5 For Office Bonus Usb Wifi Wireles')"
+0.011428571428571429,"('Cpu Pc Rakitan Core I5 For Office Bonus Usb Wifi Wireles', 'Cpu Pc Rakitan Core I5 For Office Bonus Usb Wifi Wireles', 'Vga Gaming Vurrion Gtx 750 Ti 4Gb Ddr5 128Bit Gaming Vga Ori')"
+0.024761904761904763,"('Cpu Pc Rakitan Core I5 For Office Bonus Usb Wifi Wireles', 'Vga Gaming Vurrion Gtx 750 Ti 4Gb Ddr5 128Bit Gaming Vga Ori')"
+0.017142857142857144,"('Cpu Pc Rakitan Core I5 For Office Bonus Usb Wifi Wireles', 'Vga Gaming Vurrion Gtx 750 Ti 4Gb Ddr5 128Bit Gaming Vga Ori', 'Vga Gaming Vurrion Gtx 750 Ti 4Gb Ddr5 128Bit Gaming Vga Ori')"
+0.009523809523809525,"('Hardisk Pc 500Gb Hdd Hdd Internal Komputer 500 Gb Sata 3 5', 'Hardisk Pc 500Gb Hdd Hdd Internal Komputer 500 Gb Sata 3 5')"
+0.009523809523809525,"('Hardisk Pc 500Gb Hdd Hdd Internal Komputer 500 Gb Sata 3 5', 'Memory Ram Pc Hynix 16N11 8 8Gb 1X8 Ddr3 Pc3 12800 1600Mhz', 'Memory Ram Pc Hynix 16N11 8 8Gb 1X8 Ddr3 Pc3 12800 1600Mhz')"
+0.011428571428571429,"('Hardisk Pc 500Gb Hdd Hdd Internal Komputer 500 Gb Sata 3 5', 'Memory Ram Pc Hynix 16N11 8 8Gb 1X8 Ddr3 Pc3 12800 1600Mhz', 'Memory Ram Pc Hynix 16N11 8 8Gb 1X8 Ddr3 Pc3 12800 1600Mhz', 'Vga Gaming Vurrion Gtx 750 Ti 4Gb Ddr5 128Bit Gaming Vga Ori')"
+0.024761904761904763,"('Hardisk Pc 500Gb Hdd Hdd Internal Komputer 500 Gb Sata 3 5', 'Memory Ram Pc Hynix 16N11 8 8Gb 1X8 Ddr3 Pc3 12800 1600Mhz', 'Vga Gaming Vurrion Gtx 750 Ti 4Gb Ddr5 128Bit Gaming Vga Ori')"
+0.022857142857142857,"('Hardisk Pc 500Gb Hdd Hdd Internal Komputer 500 Gb Sata 3 5', 'Memory Ram Pc Hynix 16N11 8 8Gb 1X8 Ddr3 Pc3 12800 1600Mhz', 'Vga Gaming Vurrion Gtx 750 Ti 4Gb Ddr5 128Bit Gaming Vga Ori', 'Vga Gaming Vurrion Gtx 750 Ti 4Gb Ddr5 128Bit Gaming Vga Ori')"
+0.02095238095238095,"('Hardisk Pc 500Gb Hdd Hdd Internal Komputer 500 Gb Sata 3 5', 'Vga Gaming Vurrion Gtx 750 Ti 4Gb Ddr5 128Bit Gaming Vga Ori')"
+0.013333333333333334,"('Hardisk Pc 500Gb Hdd Hdd Internal Komputer 500 Gb Sata 3 5', 'Vga Gaming Vurrion Gtx 750 Ti 4Gb Ddr5 128Bit Gaming Vga Ori', 'Vga Gaming Vurrion Gtx 750 Ti 4Gb Ddr5 128Bit Gaming Vga Ori')"
+0.015238095238095238,"('Memory Ram Pc Hynix 16N11 8 8Gb 1X8 Ddr3 Pc3 12800 1600Mhz', 'Memory Ram Pc Hynix 16N11 8 8Gb 1X8 Ddr3 Pc3 12800 1600Mhz')"
+0.015238095238095238,"('Memory Ram Pc Hynix 16N11 8 8Gb 1X8 Ddr3 Pc3 12800 1600Mhz', 'Vga Gaming Vurrion Gtx 750 Ti 4Gb Ddr5 128Bit Gaming Vga Ori')"
+0.011428571428571429,"('Memory Ram Pc Hynix 16N11 8 8Gb 1X8 Ddr3 Pc3 12800 1600Mhz', 'Vga Gaming Vurrion Gtx 750 Ti 4Gb Ddr5 128Bit Gaming Vga Ori', 'Vga Gaming Vurrion Gtx 750 Ti 4Gb Ddr5 128Bit Gaming Vga Ori')"
+0.29904761904761906,"('Vga Gaming Vurrion Gtx 750 Ti 4Gb Ddr5 128Bit Gaming Vga Ori',)"
+0.0380952380952381,"('Vga Gaming Vurrion Gtx 750 Ti 4Gb Ddr5 128Bit Gaming Vga Ori', 'Vga Gaming Vurrion Gtx 750 Ti 4Gb Ddr5 128Bit Gaming Vga Ori')"
