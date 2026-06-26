@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Association Rule Mining — GT Computer Bandung</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background: #0f172a;
+            color: #e2e8f0;
+            min-height: 100vh;
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+            border-bottom: 1px solid #334155;
+            padding: 24px 32px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .header h1 {
+            font-size: 22px;
+            font-weight: 700;
+            background: linear-gradient(135deg, #60a5fa, #a78bfa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .header .subtitle {
+            font-size: 13px;
+            color: #94a3b8;
+            margin-top: 4px;
+        }
+        .header .badge {
+            background: #1e40af;
+            color: #93c5fd;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        /* Summary Cards */
+        .summary-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+            padding: 24px 32px;
+        }
+        .card {
+            background: #1e293b;
+            border: 1px solid #334155;
+            border-radius: 12px;
+            padding: 20px;
+            transition: transform 0.15s, box-shadow 0.15s;
+        }
+        .card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+        }
+        .card .label {
+            font-size: 12px;
+            color: #94a3b8;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 8px;
+        }
+        .card .value {
+            font-size: 28px;
+            font-weight: 800;
+            background: linear-gradient(135deg, #60a5fa, #a78bfa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .card .unit {
+            font-size: 13px;
+            color: #64748b;
+            margin-top: 4px;
+        }
+
+        /* Chart Grid */
+        .chart-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(480px, 1fr));
+            gap: 20px;
+            padding: 0 32px 24px;
+        }
+        .chart-box {
+            background: #1e293b;
+            border: 1px solid #334155;
+            border-radius: 12px;
+            padding: 20px;
+        }
+        .chart-box h3 {
+            font-size: 15px;
+            font-weight: 600;
+            margin-bottom: 4px;
+            color: #f1f5f9;
+        }
+        .chart-box .desc {
+            font-size: 12px;
+            color: #64748b;
+            margin-bottom: 16px;
+        }
+        .chart-box canvas {
+            max-height: 340px;
+        }
+
+        /* Full-width chart */
+        .chart-full {
+            grid-column: 1 / -1;
+        }
+
+        /* Table */
+        .table-wrap {
+            overflow-x: auto;
+            margin-top: 12px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 12px;
+        }
+        th {
+            background: #0f172a;
+            color: #94a3b8;
+            padding: 10px 12px;
+            text-align: left;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            position: sticky;
+            top: 0;
+        }
+        td {
+            padding: 10px 12px;
+            border-bottom: 1px solid #1e293b;
+            color: #cbd5e1;
+        }
+        tr:hover td { background: #1a2332; }
+
+        /* Rule arrow */
+        .rule-arrow {
+            color: #f59e0b;
+            font-weight: bold;
+            padding: 0 6px;
+        }
+        .antecedent { color: #60a5fa; }
+        .consequent { color: #a78bfa; }
+
+        /* Metrics badges */
+        .metric {
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 11px;
+        }
+        .metric.support { background: #065f46; color: #6ee7b7; }
+        .metric.confidence { background: #7c2d12; color: #fdba74; }
+        .metric.lift { background: #5b21b6; color: #c4b5fd; }
+        .metric.lift-high { background: #7f1d1d; color: #fca5a5; }
+
+        /* Loading */
+        .loading {
+            text-align: center;
+            padding: 60px;
+            color: #64748b;
+            font-size: 14px;
+        }
+        .loading .spinner {
+            width: 32px;
+            height: 32px;
+            border: 3px solid #334155;
+            border-top-color: #60a5fa;
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+            margin: 0 auto 12px;
+        }
+        @keyframes spin { to { transform: rotate(360deg); } }
+
+        /* Tabs */
+        .tabs {
+            display: flex;
+            gap: 8px;
+            padding: 0 32px 16px;
+        }
+        .tab {
+            padding: 8px 20px;
+            border-radius: 8px;
+            border: 1px solid #334155;
+            background: #1e293b;
+            color: #94a3b8;
+            cursor: pointer;
+            font-size: 13px;
+            font-weight: 600;
+            transition: all 0.15s;
+        }
+        .tab:hover { background: #334155; color: #e2e8f0; }
+        .tab.active {
+            background: #1e40af;
+            color: #93c5fd;
+            border-color: #3b82f6;
+        }
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 24px 32px;
+            font-size: 12px;
+            color: #475569;
+            border-top: 1px solid #1e293b;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .chart-grid { grid-template-columns: 1fr; padding: 0 16px 16px; }
+            .summary-row { padding: 16px; grid-template-columns: repeat(2, 1fr); }
+            .header { padding: 16px; }
+            .tabs { padding: 0 16px 12px; flex-wrap: wrap; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <div class="header">
+        <div>
+            <h1>📊 Dashboard Association Rule Mining</h1>
+            <div class="subtitle">GT Computer Bandung — Analisis Pola Pembelian Pelanggan</div>
+        </div>
+        <div class="badge" id="file-badge">Loading...</div>
+    </div>
+
+    <!-- Summary Cards -->
+    <div class="summary-row" id="summary-cards">
+        <div class="loading"><div class="spinner"></div>Memuat data...</div>
+    </div>
+
+    <!-- Tabs -->
+    <div class="tabs">
+        <div class="tab active" data-tab="overview">📈 Overview</div>
+        <div class="tab" data-tab="items">📦 Top Items</div>
+        <div class="tab" data-tab="rules">🔗 Association Rules</div>
+    </div>
+
+    <!-- Tab: Overview -->
+    <div class="tab-content active" id="tab-overview">
+        <div class="chart-grid">
+            <!-- Kategori Produk (Pie) -->
+            <div class="chart-box">
+                <h3>🥧 Kategori Produk</h3>
+                <div class="desc">Distribusi frequent itemsets berdasarkan kategori produk</div>
+                <canvas id="chartCategory"></canvas>
+            </div>
+
+            <!-- Distribusi Itemset Size (Bar) -->
+            <div class="chart-box">
+                <h3>📏 Ukuran Itemset</h3>
+                <div class="desc">Berapa banyak produk yang muncul bersamaan dalam satu transaksi</div>
+                <canvas id="chartSize"></canvas>
+            </div>
+
+            <!-- Distribusi Support (Bar) -->
+            <div class="chart-box">
+                <h3>📊 Distribusi Support</h3>
+                <div class="desc">Seberapa sering kombinasi produk muncul di seluruh transaksi</div>
+                <canvas id="chartSupportDist"></canvas>
+            </div>
+
+            <!-- Distribusi Confidence (Bar) -->
+            <div class="chart-box">
+                <h3>🎯 Distribusi Confidence</h3>
+                <div class="desc">Seberapa kuat aturan: "jika beli A, maka beli B"</div>
+                <canvas id="chartConfDist"></canvas>
+            </div>
+
+            <!-- Distribusi Lift (Bar) -->
+            <div class="chart-box chart-full">
+                <h3>🚀 Distribusi Lift</h3>
+                <div class="desc">Lift &gt; 1 = hubungan positif (produk saling mendukung) | Lift = 1 = tidak ada hubungan | Lift &lt; 1 = hubungan negatif</div>
+                <canvas id="chartLiftDist"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <!-- Tab: Items -->
+    <div class="tab-content" id="tab-items">
+        <div class="chart-grid">
+            <!-- Top Single Items -->
+            <div class="chart-box">
+                <h3>🏆 Produk Paling Populer (Single Item)</h3>
+                <div class="desc">15 produk dengan support tertinggi — paling sering dibeli</div>
+                <canvas id="chartTopSingle"></canvas>
+            </div>
+
+            <!-- Top Combinations -->
+            <div class="chart-box">
+                <h3>🔥 Kombinasi Produk Terpopuler</h3>
+                <div class="desc">15 kombinasi produk yang paling sering dibeli bersamaan</div>
+                <canvas id="chartTopCombo"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <!-- Tab: Rules -->
+    <div class="tab-content" id="tab-rules">
+        <div class="chart-grid">
+            <!-- Top Rules by Lift -->
+            <div class="chart-box chart-full">
+                <h3>⚡ Aturan Terkuat (Berdasarkan Lift)</h3>
+                <div class="desc">Lift tinggi = kombinasi produk yang sangat berkorelasi</div>
+                <div class="table-wrap">
+                    <table id="tableLift">
+                        <thead>
+                            <tr>
+                                <th style="width:5%">#</th>
+                                <th style="width:30%">Jika Beli...</th>
+                                <th style="width:5%"></th>
+                                <th style="width:30%">...Maka Juga Beli</th>
+                                <th style="width:10%">Support</th>
+                                <th style="width:10%">Confidence</th>
+                                <th style="width:10%">Lift</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Top Rules by Confidence -->
+            <div class="chart-box chart-full">
+                <h3>🎯 Aturan Paling Akurat (Berdasarkan Confidence)</h3>
+                <div class="desc">Confidence tinggi = probabilitas besar pelanggan juga membeli produk berikutnya</div>
+                <div class="table-wrap">
+                    <table id="tableConf">
+                        <thead>
+                            <tr>
+                                <th style="width:5%">#</th>
+                                <th style="width:30%">Jika Beli...</th>
+                                <th style="width:5%"></th>
+                                <th style="width:30%">...Maka Juga Beli</th>
+                                <th style="width:10%">Support</th>
+                                <th style="width:10%">Confidence</th>
+                                <th style="width:10%">Lift</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        Dashboard Association Rule Mining — GT Computer Bandung — Data dari file CSV terbaru
+    </div>
+
+    <script>
+        // ============ TAB SWITCHING ============
+        document.querySelectorAll('.tab').forEach(tab => {
+            tab.addEventListener('click', () => {
+                document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+                document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+                tab.classList.add('active');
+                document.getElementById('tab-' + tab.dataset.tab).classList.add('active');
+            });
+        });
+
+        // ============ CHART DEFAULTS ============
+        Chart.defaults.color = '#94a3b8';
+        Chart.defaults.borderColor = '#334155';
+        Chart.defaults.font.family = "'Segoe UI', system-ui, sans-serif";
+
+        const COLORS = [
+            '#60a5fa', '#a78bfa', '#34d399', '#fbbf24', '#f87171',
+            '#38bdf8', '#c084fc', '#4ade80', '#fb923c', '#e879f9',
+            '#22d3ee', '#facc15', '#f472b6', '#a3e635', '#818cf8'
+        ];
+
+        // ============ LOAD DATA ============
+        async function loadJSON(url) {
+            const res = await fetch(url);
+            return res.json();
+        }
+
+        async function init() {
+            // Summary
+            const summary = await loadJSON('/api/summary');
+            if (summary.rules_file) {
+                document.getElementById('file-badge').textContent = summary.rules_file;
+            }
+
+            const cards = document.getElementById('summary-cards');
+            cards.innerHTML = '';
+            const cardData = [
+                { label: 'Total Frequent Itemsets', value: summary.total_itemsets || 0, unit: 'kombinasi produk' },
+                { label: 'Total Association Rules', value: summary.total_rules || 0, unit: 'aturan' },
+                { label: 'Rata-rata Support', value: summary.avg_support || 0, unit: '' },
+                { label: 'Rata-rata Confidence', value: summary.avg_confidence || 0, unit: '' },
+                { label: 'Rata-rata Lift', value: summary.avg_lift || 0, unit: '' },
+                { label: 'Lift Tertinggi', value: summary.max_lift || 0, unit: 'korelasi terkuat' },
+            ];
+            cardData.forEach(c => {
+                const el = document.createElement('div');
+                el.className = 'card';
+                el.innerHTML = `
+                    <div class="label">${c.label}</div>
+                    <div class="value">${typeof c.value === 'number' && c.value < 10 ? c.value.toFixed(2) : c.value.toLocaleString()}</div>
+                    <div class="unit">${c.unit}</div>
+                `;
+                cards.appendChild(el);
+            });
+
+            // Itemset Size Distribution
+            const sizeDist = summary.itemset_size_distribution || {};
+            const sizeLabels = Object.keys(sizeDist).map(k => k + ' item');
+            const sizeValues = Object.values(sizeDist);
+            new Chart(document.getElementById('chartSize'), {
+                type: 'bar',
+                data: {
+                    labels: sizeLabels,
+                    datasets: [{
+                        label: 'Jumlah Itemset',
+                        data: sizeValues,
+                        backgroundColor: COLORS.slice(0, sizeLabels.length),
+                        borderRadius: 6,
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: { legend: { display: false } },
+                    scales: {
+                        y: { beginAtZero: true, title: { display: true, text: 'Jumlah' } },
+                        x: { title: { display: true, text: 'Ukuran Itemset' } }
+                    }
+                }
+            });
+
+            // Distribution charts
+            const dist = await loadJSON('/api/distribution');
+
+            function makeDistChart(canvasId, data, color, title) {
+                new Chart(document.getElementById(canvasId), {
+                    type: 'bar',
+                    data: {
+                        labels: data.map(d => d.range),
+                        datasets: [{
+                            label: 'Jumlah Rules',
+                            data: data.map(d => d.count),
+                            backgroundColor: color,
+                            borderRadius: 4,
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        plugins: { legend: { display: false } },
+                        scales: {
+                            y: { beginAtZero: true },
+                            x: { title: { display: true, text: title } }
+                        }
+                    }
+                });
+            }
+
+            makeDistChart('chartSupportDist', dist.support_dist, '#34d399', 'Range Support');
+            makeDistChart('chartConfDist', dist.confidence_dist, '#fbbf24', 'Range Confidence');
+            makeDistChart('chartLiftDist', dist.lift_dist, '#a78bfa', 'Range Lift');
+
+            // Category Pie
+            const catData = await loadJSON('/api/category-pie');
+            const catLabels = Object.keys(catData.categories);
+            const catValues = Object.values(catData.categories);
+            new Chart(document.getElementById('chartCategory'), {
+                type: 'pie',
+                data: {
+                    labels: catLabels,
+                    datasets: [{
+                        data: catValues,
+                        backgroundColor: COLORS.slice(0, catLabels.length),
+                        borderWidth: 2,
+                        borderColor: '#1e293b',
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: { position: 'bottom', labels: { padding: 12, usePointStyle: true } }
+                    }
+                }
+            });
+
+            // Top Items
+            const items = await loadJSON('/api/top-items');
+
+            // Top Single Items
+            const sLabels = items.top_single_items.map(i => {
+                const parts = i.item.split(' ');
+                return parts.length > 5 ? parts.slice(0, 5).join(' ') + '...' : i.item;
+            });
+            const sValues = items.top_single_items.map(i => i.support);
+            new Chart(document.getElementById('chartTopSingle'), {
+                type: 'bar',
+                data: {
+                    labels: sLabels,
+                    datasets: [{
+                        label: 'Support',
+                        data: sValues,
+                        backgroundColor: '#60a5fa',
+                        borderRadius: 4,
+                    }]
+                },
+                options: {
+                    indexAxis: 'y',
+                    responsive: true,
+                    plugins: { legend: { display: false } },
+                    scales: {
+                        x: { beginAtZero: true, title: { display: true, text: 'Support' } },
+                    }
+                }
+            });
+
+            // Top Combinations
+            const cLabels = items.top_combinations.map(i => {
+                const parts = i.combination.split(' + ');
+                return parts.map(p => {
+                    const words = p.split(' ');
+                    return words.length > 4 ? words.slice(0, 4).join(' ') + '...' : p;
+                }).join('\n+ ');
+            });
+            const cValues = items.top_combinations.map(i => i.support);
+            const cColors = items.top_combinations.map(i => {
+                if (i.size >= 4) return '#f87171';
+                if (i.size >= 3) return '#fbbf24';
+                return '#34d399';
+            });
+            new Chart(document.getElementById('chartTopCombo'), {
+                type: 'bar',
+                data: {
+                    labels: cLabels,
+                    datasets: [{
+                        label: 'Support',
+                        data: cValues,
+                        backgroundColor: cColors,
+                        borderRadius: 4,
+                    }]
+                },
+                options: {
+                    indexAxis: 'y',
+                    responsive: true,
+                    plugins: { legend: { display: false } },
+                    scales: {
+                        x: { beginAtZero: true, title: { display: true, text: 'Support' } },
+                    }
+                }
+            });
+
+            // Rules Tables
+            const rules = await loadJSON('/api/top-rules');
+
+            function fillTable(tableId, rulesData) {
+                const tbody = document.querySelector(`#${tableId} tbody`);
+                tbody.innerHTML = '';
+                rulesData.forEach((r, i) => {
+                    const tr = document.createElement('tr');
+                    const liftClass = r.lift > 5 ? 'metric lift-high' : 'metric lift';
+                    tr.innerHTML = `
+                        <td>${i + 1}</td>
+                        <td class="antecedent">${r.antecedent}</td>
+                        <td class="rule-arrow">⇒</td>
+                        <td class="consequent">${r.consequent}</td>
+                        <td><span class="metric support">${r.support.toFixed(4)}</span></td>
+                        <td><span class="metric confidence">${r.confidence.toFixed(4)}</span></td>
+                        <td><span class="${liftClass}">${r.lift.toFixed(4)}</span></td>
+                    `;
+                    tbody.appendChild(tr);
+                });
+            }
+
+            fillTable('tableLift', rules.top_by_lift);
+            fillTable('tableConf', rules.top_by_confidence);
+        }
+
+        init().catch(err => {
+            document.getElementById('summary-cards').innerHTML =
+                `<div class="loading" style="color:#f87171">⚠️ Gagal memuat data: ${err.message}<br>Pastikan server Flask berjalan.</div>`;
+        });
+    </script>
+</body>
+</html>
